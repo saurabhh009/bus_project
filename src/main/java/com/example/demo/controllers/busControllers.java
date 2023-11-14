@@ -24,7 +24,7 @@ import com.example.demo.service.impl.busServiceImpl;
 public class busControllers {
 
 	@Autowired
-	private busService BusSevice;
+	private busService BusService;
 	
 	@PostMapping("/")
 	@PreAuthorize("hasRole('ADMIN')")
@@ -36,7 +36,7 @@ public class busControllers {
 	@PutMapping("/{userId}")
 	@PreAuthorize("hasRole('ADMIN')")
 	public ResponseEntity<busDto> updateBus(@RequestBody busDto busDto, @PathVariable("userId") Integer uid) {
-		busDto updatedUser = this.BusService.updateBus(busDto, uid);
+		busDto updatedUser = this.BusService.updatebus(busDto, uid);
 		return ResponseEntity.ok(updatedUser);
 	}
 	
@@ -47,13 +47,5 @@ public class busControllers {
 		return new ResponseEntity<String>("User deleted Successfully", HttpStatus.OK);
 	}
 
-	public busService getBusSevice() {
-		return BusSevice;
-	}
-
-	public void setBusSevice(busService busSevice) {
-		BusSevice = busSevice;
-	}
     }
-	
 	
